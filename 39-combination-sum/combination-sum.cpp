@@ -14,8 +14,6 @@ void find(vector<int>&candidates,vector<vector<int>>&ans,vector<int>&temp,int su
     temp.push_back(candidates[index]);
     find(candidates,ans,temp,sum+candidates[index],target,index);
     temp.pop_back();
-    
-
 }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
        vector<vector<int>>ans;
