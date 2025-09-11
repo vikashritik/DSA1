@@ -15,7 +15,7 @@ public:
         if(p==NULL && q==NULL){
             return 1;
         }
-        if(p==NULL || q==NULL){
+        if(!p && q || !q && p){
             return false;
         }
         
