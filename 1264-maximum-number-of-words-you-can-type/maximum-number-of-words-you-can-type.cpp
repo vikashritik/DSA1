@@ -1,30 +1,26 @@
 class Solution {
 public:
     int canBeTypedWords(string text, string brokenLetters) {
-        int freq[26] = {0}; 
-        for(int j = 0; j < brokenLetters.size(); j++) {
-            int k = brokenLetters[j] - 'a'; 
-            freq[k] = 1; 
+        unordered_set<char> brokenSet;
+        
+        for(char c : brokenLetters) {
+            brokenSet.insert(c);
         }
         
         int count = 0;
         bool canType = true;
         
-        for(int i = 0; i < text.size(); i++) {
-            if(text[i] == ' ') { 
+        for(int i = 0; i <= text.size(); i++) {
+            if(i == text.size() || text[i] == ' ') {
                 if(canType) {
                     count++;
                 }
-                canType = true; 
-            } else {
-                if(freq[text[i] - 'a'] == 1) {
+                canType = true;
+            } else if(canType) {
+                if(brokenSet.find(text[i]) != brokenSet.end()) {
                     canType = false;
                 }
             }
-        }
-
-        if(canType) {
-            count++;
         }
         
         return count;
